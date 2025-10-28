@@ -15,7 +15,8 @@ int main()
   int population;
   int turistic_points;
   float population_density;
-  float pib_per_capita; 
+  float pib_per_capita;
+  float total_power_1, total_power_2;
 
   // Primeira rodada de entrada de dados:
   // Área para entrada de dados
@@ -35,11 +36,14 @@ int main()
   scanf("%d", &turistic_points);
 
   // Cálculo de densidade populacional e PIB per capita
-  population_density = population / (area * 1000);
-  pib_per_capita = (pib * 1000000) / population;
+  population_density = population / area;
+  pib_per_capita = pib / population;
+
+  // Cálculo do total do poder
+  total_power_1 = population + area + pib_per_capita + population_density;
 
   // Área para exibição dos dados da cidade
-  printf("\nDados da cidade:\n" );
+  printf("\nDados da cidade:\n");
   printf("Estado: %s\n", nameState);
   printf("Cidade: %s\n", nameCity);
   printf("Código: %s\n", code);
@@ -50,8 +54,8 @@ int main()
   printf("Densidade Populacional: %.1f habitantes/km²\n", population_density);
   printf("PIB per Capita: %.1f milhões\n", pib_per_capita);
 
-  //Segunda rodada de entrada de dados:
-  //Entrada de dados
+  // Segunda rodada de entrada de dados:
+  // Entrada de dados
   printf("Digite o nome do estado: ");
   scanf("%s", nameState);
   printf("Digite o nome da cidade: ");
@@ -68,8 +72,11 @@ int main()
   scanf("%d", &turistic_points);
 
   // Cálculo de densidade populacional e PIB per capita
-  population_density = population / (area * 1000);
-  pib_per_capita = (pib * 1000000) / population;
+  population_density = population / area;
+  pib_per_capita = pib / population;
+
+  // Cálculo do total do poder
+  total_power_2 = population + area + pib_per_capita + (population_density / 1) + turistic_points;
 
   // Área para exibição dos dados da cidade
   printf("\nDados da cidade:\n");
@@ -83,5 +90,9 @@ int main()
   printf("Densidade Populacional: %.1f habitantes/km²\n", population_density);
   printf("PIB per Capita: %.1f milhões\n", pib_per_capita);
 
+  // Área para exibição do resultado da comparação entre as duas cidades
+  printf("\nResultado da comparação entre as duas cidades:\n");
+  printf("Poder total:  Carta 1 venceu (%d)\n", (total_power_1 > total_power_2));
+  
   return 0;
 }
